@@ -23,4 +23,5 @@ jobs:
             ls -ld /var/www/konkantrip/{dev,stage}/{clients,frontend}
             find /var/www/konkantrip/dev/clients /var/www/konkantrip/stage/clients -maxdepth 2 -type f -name index.html
             pm2 list
-            ss -ltn
+            ls -ld /var/www/konkantrip /var/www/konkantrip/dev /var/www/konkantrip/stage
+            sudo -n -l
