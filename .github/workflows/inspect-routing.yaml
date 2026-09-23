@@ -1,0 +1,26 @@
+name: Inspect clients routing
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || '22' }}
+          script: |
+            for config in /etc/nginx/sites-enabled/*; do
+              if grep -qE '(devclients|stageclients)\.konkantrip\.com' "$config"; then
+                echo "Configuration: $config"
+                cat "$config"
+              fi
+            done
+            ls -ld /var/www/konkantrip/{dev,stage}/{clients,frontend}
+            find /var/www/konkantrip/dev/clients /var/www/konkantrip/stage/clients -maxdepth 2 -type f -name index.html
+            pm2 list
+            ss -ltn
