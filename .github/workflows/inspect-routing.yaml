@@ -1,4 +1,4 @@
-name: Inspect clients routing
+name: Move existing deployment to clients
 on:
   workflow_dispatch:
 permissions:
@@ -14,14 +14,18 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT || '22' }}
           script: |
-            for config in /etc/nginx/sites-enabled/*; do
-              if grep -qE '(devclients|stageclients)\.konkantrip\.com' "$config"; then
-                echo "Configuration: $config"
-                cat "$config"
-              fi
+            set -eu
+            for environment in dev stage; do
+              base="/var/www/konkantrip/$environment"
+              test -w "$base/clients"
+              test "$(cat "$base/frontend/dist/version.txt")" = '8c265f73127cad368bb76632d5d3b9fd89291b99'
+              test ! -e "$base/clients/dist"
+              cp -a "$base/frontend/dist" "$base/clients/dist"
+              site="https://${environment}clients.konkantrip.com"
+              test "$(curl --fail --silent --show-error "$site/version.txt")" = '8c265f73127cad368bb76632d5d3b9fd89291b99'
+              curl --fail --silent --show-error "$site/" | grep -q '<div id="root">'
+              curl --fail --silent --show-error "$site/login" | grep -q '<div id="root">'
+              pm2 delete "konkantrip-$environment-frontend"
+              echo "$site is now served from clients/dist"
             done
-            ls -ld /var/www/konkantrip/{dev,stage}/{clients,frontend}
-            find /var/www/konkantrip/dev/clients /var/www/konkantrip/stage/clients -maxdepth 2 -type f -name index.html
-            pm2 list
-            ls -ld /var/www/konkantrip /var/www/konkantrip/dev /var/www/konkantrip/stage
-            sudo -n -l
+            pm2 save
