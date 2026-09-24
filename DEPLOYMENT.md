@@ -8,16 +8,18 @@ requests run tests/build only; manual workflow runs respect the selected branch.
 | --- | --- | --- | --- | --- |
 | develop | https://devclients.konkantrip.com | https://devapi.konkantrip.com/api/v1 | /var/www/konkantrip/dev/clients | Nginx static |
 | stage | https://stageclients.konkantrip.com | https://stageapi.konkantrip.com/api/v1 | /var/www/konkantrip/stage/clients | Nginx static |
-| prod | Unconfigured | Unconfigured | /var/www/konkantrip/prod/clients | Unconfigured |
+| prod | Unconfigured | https://api.konkantrip.com/api/v1 | /var/www/konkantrip/prod/clients | Unconfigured |
 
 The workflow uses the existing repository secrets `SERVER_HOST`, `SERVER_USER`,
 `SERVER_SSH_KEY`, and optional `SERVER_PORT` (defaults to 22). Each GitHub
-environment permits its matching branch and supplies `DEPLOY_ENABLED`, `SITE_URL`,
-and `VITE_API_BASE_URL`. The API URL is public build-time configuration, including
+environment permits its matching branch and supplies `DEPLOY_ENABLED` and `SITE_URL`.
+The workflow fixes `VITE_API_BASE_URL` to the API listed above for each deployment
+branch, so an environment variable cannot accidentally route to another environment.
+The API URL is public build-time configuration, including
 for images and admin requests. The optional `VITE_ENABLE_WHATSAPP_SIMULATOR`
 variable defaults to `false` in deployments.
 
-Production stays disabled (`DEPLOY_ENABLED=false`) until its domain, API, and
+Production stays disabled (`DEPLOY_ENABLED=false`) until its site domain and
 Nginx static root are configured. Dev/stage Nginx roots already point to
 `/var/www/konkantrip/<environment>/clients/dist`, with SPA fallback to
 `/index.html`. The deployment account needs write access to these directories.

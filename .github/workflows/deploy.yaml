@@ -54,7 +54,7 @@ jobs:
       - name: Build for environment
         if: vars.DEPLOY_ENABLED == 'true'
         env:
-          VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
+          VITE_API_BASE_URL: ${{ github.ref_name == 'develop' && 'https://devapi.konkantrip.com/api/v1' || github.ref_name == 'stage' && 'https://stageapi.konkantrip.com/api/v1' || 'https://api.konkantrip.com/api/v1' }}
           VITE_ENABLE_WHATSAPP_SIMULATOR: ${{ vars.VITE_ENABLE_WHATSAPP_SIMULATOR || 'false' }}
           SITE_URL: ${{ vars.SITE_URL }}
         run: |
