@@ -6,8 +6,8 @@ requests run tests/build only; manual workflow runs respect the selected branch.
 
 | Branch / GitHub environment | Site | API | Server directory | Serving |
 | --- | --- | --- | --- | --- |
-| develop | https://devclients.konkantrip.com | https://devapi.konkantrip.com/api/v1 | /var/www/konkantrip/dev/clients | Nginx static |
-| stage | https://stageclients.konkantrip.com | https://stageapi.konkantrip.com/api/v1 | /var/www/konkantrip/stage/clients | Nginx static |
+| develop | https://devclients.konkantrip.com | https://devapi.konkantrip.com/api/v1 | /var/www/konkantrip/dev/admin | Nginx static |
+| stage | https://stageclients.konkantrip.com | https://stageapi.konkantrip.com/api/v1 | /var/www/konkantrip/stage/admin | Nginx static |
 | prod | Unconfigured | https://api.konkantrip.com/api/v1 | /var/www/konkantrip/prod/clients | Unconfigured |
 
 The workflow uses the existing repository secrets `SERVER_HOST`, `SERVER_USER`,
@@ -21,7 +21,7 @@ variable defaults to `false` in deployments.
 
 Production stays disabled (`DEPLOY_ENABLED=false`) until its site domain and
 Nginx static root are configured. Dev/stage Nginx roots already point to
-`/var/www/konkantrip/<environment>/clients/dist`, with SPA fallback to
+`/var/www/konkantrip/<environment>/admin/dist`, with SPA fallback to
 `/index.html`. The deployment account needs write access to these directories.
 No PM2 process, application port, or Nginx reload is needed for this app.
 
@@ -30,7 +30,7 @@ lack OTP exports (nine baseline failures). All other tests and the build are
 required. Restore these two suites as required checks when their mocks are fixed.
 
 After required tests/build pass, enabled deployments build with the environment's API URL,
-copy `dist` over SSH to `clients/dist`, and verify the public HTTPS homepage,
+copy `dist` over SSH to `admin/dist` for dev/stage (`clients/dist` for production), and verify the public HTTPS homepage,
 login deep link, and deployed commit using `/version.txt`. Deployments are
 serialized per branch. The separate `frontend` folders and ports 3000/3100 are
 not deployment targets for this app.

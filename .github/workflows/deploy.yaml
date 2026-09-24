@@ -71,7 +71,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_PORT || '22' }}
           source: dist/*
-          target: /var/www/konkantrip/${{ github.ref_name == 'develop' && 'dev' || github.ref_name }}/clients/dist
+          target: /var/www/konkantrip/${{ github.ref_name == 'develop' && 'dev' || github.ref_name }}/${{ github.ref_name == 'prod' && 'clients' || 'admin' }}/dist
           strip_components: 1
           overwrite: true
       - name: Verify clients site
