@@ -6,8 +6,8 @@ requests run tests/build only; manual workflow runs respect the selected branch.
 
 | Branch / GitHub environment | Site | API | Server directory | Serving |
 | --- | --- | --- | --- | --- |
-| develop | https://devclients.konkantrip.com | https://devapi.konkantrip.com/api/v1 | /var/www/konkantrip/dev/admin | Nginx static |
-| stage | https://stageclients.konkantrip.com | https://stageapi.konkantrip.com/api/v1 | /var/www/konkantrip/stage/admin | Nginx static |
+| develop | https://devadmin.konkantrip.com | https://devapi.konkantrip.com/api/v1 | /var/www/konkantrip/dev/admin | Nginx static |
+| stage | https://stageadmin.konkantrip.com | https://stageapi.konkantrip.com/api/v1 | /var/www/konkantrip/stage/admin | Nginx static |
 | prod | Unconfigured | https://api.konkantrip.com/api/v1 | /var/www/konkantrip/prod/clients | Unconfigured |
 
 The workflow uses the existing repository secrets `SERVER_HOST`, `SERVER_USER`,
