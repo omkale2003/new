@@ -16,8 +16,7 @@ environment permits its matching branch and supplies `DEPLOY_ENABLED` and `SITE_
 The workflow fixes `VITE_API_BASE_URL` to the API listed above for each deployment
 branch, so an environment variable cannot accidentally route to another environment.
 The API URL is public build-time configuration, including
-for images and admin requests. The optional `VITE_ENABLE_WHATSAPP_SIMULATOR`
-variable defaults to `false` in deployments.
+for images and admin requests.
 
 Production stays disabled (`DEPLOY_ENABLED=false`) until its site domain and
 Nginx static root are configured. Dev/stage Nginx roots already point to
