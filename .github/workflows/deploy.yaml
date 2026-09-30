@@ -55,7 +55,6 @@ jobs:
         if: vars.DEPLOY_ENABLED == 'true'
         env:
           VITE_API_BASE_URL: ${{ github.ref_name == 'develop' && 'https://devapi.konkantrip.com/api/v1' || github.ref_name == 'stage' && 'https://stageapi.konkantrip.com/api/v1' || 'https://api.konkantrip.com/api/v1' }}
-          VITE_ENABLE_WHATSAPP_SIMULATOR: ${{ vars.VITE_ENABLE_WHATSAPP_SIMULATOR || 'false' }}
           SITE_URL: ${{ vars.SITE_URL }}
         run: |
           node -e 'const u = new URL(process.env.VITE_API_BASE_URL); if (u.protocol !== "https:" || !u.pathname.endsWith("/api/v1")) throw new Error("Set an HTTPS VITE_API_BASE_URL ending in /api/v1"); const site = new URL(process.env.SITE_URL); if (site.protocol !== "https:") throw new Error("Set an HTTPS SITE_URL");'
