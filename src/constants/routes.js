@@ -22,5 +22,4 @@ export const ROUTES = {
   OWNER_REPORTS: "/owner/reports",
   OWNER_SETTINGS: "/owner/settings",
   OWNER_PROFILE: "/owner/profile",
-  WHATSAPP_SIMULATOR: "/whatsapp-simulator",
 };

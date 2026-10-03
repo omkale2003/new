@@ -21,12 +21,6 @@ function App() {
           >
             Register
           </Link>
-          <Link 
-            to={ROUTES.WHATSAPP_SIMULATOR}
-            className="rounded-lg border border-emerald-300 bg-emerald-50 px-6 py-2.5 text-sm font-semibold text-emerald-800 transition hover:bg-emerald-100 shadow-sm flex items-center gap-1.5"
-          >
-            <span>WhatsApp Simulator Demo</span>
-          </Link>
         </div>
       </div>
     </main>
