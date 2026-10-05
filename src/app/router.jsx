@@ -45,7 +45,6 @@ import PaymentsPage from "../features/owner/pages/PaymentsPage.jsx";
 import ReportsPage from "../features/owner/pages/ReportsPage.jsx";
 import SettingsPage from "../features/owner/pages/SettingsPage.jsx";
 import ProfilePage from "../features/owner/pages/ProfilePage.jsx";
-import WhatsAppSimulatorPage from "../pages/WhatsAppSimulator.jsx";
 
 import { ROUTES } from "../constants/routes.js";
 
@@ -53,11 +52,6 @@ const router = createBrowserRouter([
   {
     path: ROUTES.HOME,
     element: <App />,
-  },
-
-  {
-    path: ROUTES.WHATSAPP_SIMULATOR,
-    element: <WhatsAppSimulatorPage />,
   },
 
   {
