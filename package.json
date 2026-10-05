@@ -13,6 +13,12 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.31.7",
+    "@editorjs/embed": "^2.7.7",
+    "@editorjs/header": "^2.8.9",
+    "@editorjs/image": "^2.10.3",
+    "@editorjs/list": "^2.0.9",
+    "@editorjs/quote": "^2.7.6",
     "@hookform/resolvers": "^5.7.1",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-query": "^5.101.4",

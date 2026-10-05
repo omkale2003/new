@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Grid, Building2, Waves, Home, Store, Search, ExternalLink, Activity } from 'lucide-react';
+import { Grid, Building2, Waves, Home, Store, Search, ExternalLink, Activity, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function AppLauncherModal() {
@@ -22,6 +22,14 @@ export default function AppLauncherModal() {
             description: 'Manage hosts, reviews, and global property inventory',
             icon: Building2,
             path: '/admin/dashboard/owners',
+            active: true
+        },
+        {
+            id: 'blogs',
+            name: 'Content Engine',
+            description: 'Manage blog posts, travel guides, and SEO content',
+            icon: FileText,
+            path: '/admin/dashboard/blogs',
             active: true
         },
         {
