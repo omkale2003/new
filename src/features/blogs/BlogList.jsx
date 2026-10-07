@@ -71,8 +71,8 @@ export default function BlogList({ onCreateNew, onEdit, onPreview }) {
                                 </td>
                                 <td className="px-6 py-4 capitalize">
                                     <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${blog.status === 'published'
-                                            ? 'bg-emerald-100 text-emerald-700'
-                                            : 'bg-amber-100 text-amber-700'
+                                        ? 'bg-emerald-100 text-emerald-700'
+                                        : 'bg-amber-100 text-amber-700'
                                         }`}>
                                         {blog.status}
                                     </span>
@@ -84,6 +84,9 @@ export default function BlogList({ onCreateNew, onEdit, onPreview }) {
                                     <div className="flex gap-3 justify-end items-center">
                                         <button onClick={() => onPreview(blog.id)} className="text-[var(--color-konkan-600)] hover:text-[var(--color-konkan-800)] bg-[var(--color-konkan-50)] p-2 rounded-md transition" title="Preview">
                                             <Eye className="w-4 h-4" />
+                                        </button>
+                                        <button onClick={() => onEdit(blog.id)} className="text-blue-600 hover:text-blue-800 bg-blue-50 p-2 rounded-md transition" title="Edit">
+                                            <Edit2 className="w-4 h-4" />
                                         </button>
                                         <button onClick={() => handleDelete(blog.id)} className="text-red-500 hover:text-red-700 bg-red-50 p-2 rounded-md transition" title="Delete">
                                             <Trash2 className="w-4 h-4" />
