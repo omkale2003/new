@@ -13,6 +13,7 @@ import PendingApprovals from "../views/PendingApprovals.jsx";
 import MasterDataConfig from "../views/MasterDataConfig.jsx";
 import AdminConfig from "../views/AdminConfig.jsx";
 import GlobalAdminDashboard from "../views/GlobalAdminDashboard.jsx";
+import BlogManager from "../features/blogs/BlogManager.jsx";
 
 import LoginPage from "../features/auth/pages/LoginPage.jsx";
 import RegisterPage from "../features/auth/pages/RegisterPage.jsx";
@@ -202,7 +203,8 @@ const router = createBrowserRouter([
           { path: "properties", element: <AllPropertiesList /> },
           { path: "pending", element: <PendingApprovals /> },
           { path: "master-data", element: <MasterDataConfig /> },
-          { path: "settings", element: <AdminConfig /> }
+          { path: "settings", element: <AdminConfig /> },
+          { path: "blogs", element: <BlogManager /> }
         ]
       }
     ]
