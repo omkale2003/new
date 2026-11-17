@@ -46,6 +46,28 @@ import ReportsPage from "../features/owner/pages/ReportsPage.jsx";
 import SettingsPage from "../features/owner/pages/SettingsPage.jsx";
 import ProfilePage from "../features/owner/pages/ProfilePage.jsx";
 
+// Activity Provider Imports
+import { ACTIVITY_PROVIDER_ROUTES } from "../constants/routes.js";
+import ActivityLoginPage from "../features/activities/pages/ActivityLoginPage.jsx";
+import ActivityRegisterPage from "../features/activities/pages/ActivityRegisterPage.jsx";
+import ActivityVerifyOtpPage from "../features/activities/pages/ActivityVerifyOtpPage.jsx";
+import ActivityForgotPasswordPage from "../features/activities/pages/ActivityForgotPasswordPage.jsx";
+import ActivityVerificationStatusPage from "../features/activities/pages/ActivityVerificationStatusPage.jsx";
+
+import ActivityProtectedRoute from "../features/activities/components/ActivityProtectedRoute.jsx";
+import ActivityProviderLayout from "../layouts/ActivityProviderLayout/ActivityProviderLayout.jsx";
+import ActivityDashboardPage from "../features/activities/pages/ActivityDashboardPage.jsx";
+import MyActivitiesPage from "../features/activities/pages/MyActivitiesPage.jsx";
+import AddActivityPage from "../features/activities/pages/AddActivityPage.jsx";
+import EditActivityPage from "../features/activities/pages/EditActivityPage.jsx";
+import ActivitySlotsPage from "../features/activities/pages/ActivitySlotsPage.jsx";
+import ActivityRatesPage from "../features/activities/pages/ActivityRatesPage.jsx";
+import ActivityMediaPage from "../features/activities/pages/ActivityMediaPage.jsx";
+import ActivityBookingsPage from "../features/activities/pages/ActivityBookingsPage.jsx";
+import ActivityParticipantsPage from "../features/activities/pages/ActivityParticipantsPage.jsx";
+import ActivityProfilePage from "../features/activities/pages/ActivityProfilePage.jsx";
+import ActivitySettingsPage from "../features/activities/pages/ActivitySettingsPage.jsx";
+
 import { ROUTES } from "../constants/routes.js";
 
 const router = createBrowserRouter([
@@ -212,6 +234,84 @@ const router = createBrowserRouter([
   {
     path: "/admin/login",
     element: <Login />
+  },
+
+  // Activity Provider Public Auth Routes
+  {
+    path: ACTIVITY_PROVIDER_ROUTES.LOGIN,
+    element: <ActivityLoginPage />,
+  },
+  {
+    path: ACTIVITY_PROVIDER_ROUTES.REGISTER,
+    element: <ActivityRegisterPage />,
+  },
+  {
+    path: ACTIVITY_PROVIDER_ROUTES.VERIFY_OTP,
+    element: <ActivityVerifyOtpPage />,
+  },
+  {
+    path: ACTIVITY_PROVIDER_ROUTES.FORGOT_PASSWORD,
+    element: <ActivityForgotPasswordPage />,
+  },
+
+  // Activity Provider Protected Ecosystem
+  {
+    element: <ActivityProtectedRoute />,
+    children: [
+      {
+        element: <ActivityProviderLayout />,
+        children: [
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.DASHBOARD,
+            element: <ActivityDashboardPage />,
+          },
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.ACTIVITIES,
+            element: <MyActivitiesPage />,
+          },
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.ADD_ACTIVITY,
+            element: <AddActivityPage />,
+          },
+          {
+            path: "/activity-provider/activities/:activityId/edit",
+            element: <EditActivityPage />,
+          },
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.AVAILABILITY,
+            element: <ActivitySlotsPage />,
+          },
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.PRICING,
+            element: <ActivityRatesPage />,
+          },
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.MEDIA,
+            element: <ActivityMediaPage />,
+          },
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.BOOKINGS,
+            element: <ActivityBookingsPage />,
+          },
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.PARTICIPANTS,
+            element: <ActivityParticipantsPage />,
+          },
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.PROFILE,
+            element: <ActivityProfilePage />,
+          },
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.SETTINGS,
+            element: <ActivitySettingsPage />,
+          },
+          {
+            path: ACTIVITY_PROVIDER_ROUTES.VERIFICATION_STATUS,
+            element: <ActivityVerificationStatusPage />,
+          },
+        ],
+      },
+    ],
   }
 ]);
 

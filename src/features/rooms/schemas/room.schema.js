@@ -78,7 +78,7 @@ export const roomCapacitySchema = z.object({
   maximum_children: z.coerce.number().min(0).default(0),
   base_occupancy: z.coerce.number().min(1, "Base occupancy must be at least 1").default(2),
   extra_bed_allowed: z.coerce.number().default(1),
-  extra_bed_price: z.coerce.number().min(0).default(0),
+  extra_bed_price: z.coerce.number().int("Extra bed price must be a whole number").min(0).default(0),
   extra_bed_count: z.coerce.number().min(0).default(1),
   floor_number: optionalString(),
   is_bookable: optionalBoolean(true),

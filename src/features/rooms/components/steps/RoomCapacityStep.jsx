@@ -185,7 +185,9 @@ function RoomCapacityStep({ defaultValues, onSubmit }) {
             <input
               {...register("extra_bed_price")}
               type="number"
+              step="1"
               min="0"
+              placeholder="0"
               className="block w-full rounded-lg border border-slate-300 py-2 pl-8 pr-3 text-sm text-slate-800 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             />
           </div>

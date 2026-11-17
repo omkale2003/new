@@ -28,6 +28,7 @@ function AdminHeader() {
 
                 <div className="flex items-center">
                     <Link to="/admin/dashboard" className="m-0 text-base font-extrabold text-[var(--color-konkan-700)] flex items-center gap-2 tracking-tight hover:text-[var(--color-konkan-800)] transition">
+                        <img src="/kt_icon.png" alt="KonkanTrip Logo" className="h-7 w-7 shrink-0 object-contain" />
                         KonkanTrip
                     </Link>
                     <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-slate-300 mx-2"></span>

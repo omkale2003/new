@@ -35,11 +35,11 @@ function normalizePolicyValues(initialValues = {}) {
     child_age_limit: merged.child_age_limit ?? 6,
     child_policy: merged.child_policy ?? "",
     extra_bed_available: Boolean(merged.extra_bed_available ?? false),
-    extra_bed_charge: merged.extra_bed_charge ?? 0,
+    extra_bed_charge: merged.extra_bed_charge != null ? Math.round(Number(merged.extra_bed_charge)) : 0,
 
     pets_allowed: Boolean(merged.pets_allowed ?? false),
     pet_policy: merged.pet_policy ?? "",
-    pet_charges: merged.pet_charges ?? 0,
+    pet_charges: merged.pet_charges != null ? Math.round(Number(merged.pet_charges)) : 0,
 
     smoking_allowed: Boolean(merged.smoking_allowed ?? false),
     smoking_policy: merged.smoking_policy ?? "",
@@ -74,6 +74,7 @@ function PoliciesStep({
     handleSubmit,
     watch,
     reset,
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(propertyPolicySchema),
     defaultValues: normalizePolicyValues(initialValues),
@@ -99,8 +100,8 @@ function PoliciesStep({
       late_checkout_fee: Number(data.late_checkout_fee || 0),
       free_cancellation_hours: Number(data.free_cancellation_hours || 0),
       child_age_limit: Number(data.child_age_limit || 0),
-      extra_bed_charge: Number(data.extra_bed_charge || 0),
-      pet_charges: Number(data.pet_charges || 0),
+      extra_bed_charge: Math.round(Number(data.extra_bed_charge || 0)),
+      pet_charges: Math.round(Number(data.pet_charges || 0)),
       parking_charges: Number(data.parking_charges || 0),
       security_deposit_amount: Number(data.security_deposit_amount || 0),
     };
@@ -439,10 +440,16 @@ function PoliciesStep({
                 <input
                   id="extra_bed_charge"
                   type="number"
-                  placeholder="0.00"
-                  {...register("extra_bed_charge")}
+                  step="1"
+                  min="0"
+                  placeholder="0"
+                  {...register("extra_bed_charge", { valueAsNumber: true })}
+                  onKeyDown={(e) => { if (e.key === "." || e.key === ",") e.preventDefault(); }}
                   className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-emerald-600"
                 />
+                {errors?.extra_bed_charge && (
+                  <p className="mt-1 text-xs text-rose-600">{errors.extra_bed_charge.message}</p>
+                )}
               </div>
             )}
           </div>
@@ -466,10 +473,16 @@ function PoliciesStep({
                 <input
                   id="pet_charges"
                   type="number"
-                  placeholder="0.00"
-                  {...register("pet_charges")}
+                  step="1"
+                  min="0"
+                  placeholder="0"
+                  {...register("pet_charges", { valueAsNumber: true })}
+                  onKeyDown={(e) => { if (e.key === "." || e.key === ",") e.preventDefault(); }}
                   className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-emerald-600"
                 />
+                {errors?.pet_charges && (
+                  <p className="mt-1 text-xs text-rose-600">{errors.pet_charges.message}</p>
+                )}
               </div>
             )}
           </div>

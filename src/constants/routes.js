@@ -23,3 +23,24 @@ export const ROUTES = {
   OWNER_SETTINGS: "/owner/settings",
   OWNER_PROFILE: "/owner/profile",
 };
+
+export const ACTIVITY_PROVIDER_ROUTES = {
+  LOGIN: "/activity-provider/login",
+  REGISTER: "/activity-provider/register",
+  VERIFY_OTP: "/activity-provider/verify-otp",
+  FORGOT_PASSWORD: "/activity-provider/forgot-password",
+  VERIFICATION_STATUS: "/activity-provider/verification-status",
+
+  DASHBOARD: "/activity-provider/dashboard",
+  ACTIVITIES: "/activity-provider/activities",
+  ADD_ACTIVITY: "/activity-provider/activities/add",
+  EDIT_ACTIVITY: "/activity-provider/activities/:activityId/edit",
+  AVAILABILITY: "/activity-provider/availability",
+  PRICING: "/activity-provider/pricing",
+  MEDIA: "/activity-provider/media",
+  BOOKINGS: "/activity-provider/bookings",
+  PARTICIPANTS: "/activity-provider/participants",
+  PROFILE: "/activity-provider/profile",
+  SETTINGS: "/activity-provider/settings",
+};
+

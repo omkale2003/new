@@ -328,11 +328,11 @@ export const propertyPolicySchema = z.object({
   child_age_limit: optionalNumber(z.number().min(0)),
   child_policy: optionalString(),
   extra_bed_available: optionalBoolean(false),
-  extra_bed_charge: optionalNumber(z.number().min(0)),
+  extra_bed_charge: optionalNumber(z.number().int("Extra bed charge must be a whole number").min(0)),
 
   pets_allowed: optionalBoolean(false),
   pet_policy: optionalString(),
-  pet_charges: optionalNumber(z.number().min(0)),
+  pet_charges: optionalNumber(z.number().int("Pet charge must be a whole number").min(0)),
 
   smoking_allowed: optionalBoolean(false),
   smoking_policy: optionalString(),

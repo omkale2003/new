@@ -102,13 +102,16 @@ function OwnerSidebar() {
   return (
     <aside className="hidden h-screen w-64 shrink-0 flex-col border-r border-slate-100 bg-white lg:flex">
       {/* Brand & Portal Header */}
-      <div className="flex h-20 flex-col justify-center border-b border-slate-100 px-6">
-        <h1 className="m-0 text-xl font-bold tracking-tight text-emerald-700">
-          KonkanTrip<span className="text-xs align-top font-semibold text-emerald-600">™</span>
-        </h1>
-        <p className="m-0 mt-0.5 text-xs text-slate-500 font-medium">
-          Property Owner Portal
-        </p>
+      <div className="flex h-20 items-center gap-3 border-b border-slate-100 px-6">
+        <img src="/kt_icon.png" alt="KonkanTrip Logo" className="h-10 w-10 shrink-0 object-contain" />
+        <div>
+          <h1 className="m-0 text-xl font-bold tracking-tight text-emerald-700 leading-tight">
+            KonkanTrip<span className="text-xs align-top font-semibold text-emerald-600">™</span>
+          </h1>
+          <p className="m-0 mt-0.5 text-xs text-slate-500 font-medium">
+            Property Owner Portal
+          </p>
+        </div>
       </div>
 
       {/* Navigation */}

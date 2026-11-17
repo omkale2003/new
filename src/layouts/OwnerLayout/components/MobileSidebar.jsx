@@ -116,13 +116,16 @@ function MobileSidebar({ isOpen, onClose }) {
       {/* Drawer */}
       <aside className="relative flex h-full w-72 max-w-[85vw] flex-col bg-white shadow-2xl">
         <div className="flex h-20 items-center justify-between border-b border-slate-100 px-5">
-          <div>
-            <h1 className="m-0 text-xl font-bold tracking-tight text-emerald-700">
-              KonkanTrip<span className="text-xs align-top font-semibold text-emerald-600">™</span>
-            </h1>
-            <p className="m-0 mt-0.5 text-xs text-slate-500 font-medium">
-              Property Owner Portal
-            </p>
+          <div className="flex items-center gap-3">
+            <img src="/kt_icon.png" alt="KonkanTrip Logo" className="h-10 w-10 shrink-0 object-contain" />
+            <div>
+              <h1 className="m-0 text-xl font-bold tracking-tight text-emerald-700 leading-tight">
+                KonkanTrip<span className="text-xs align-top font-semibold text-emerald-600">™</span>
+              </h1>
+              <p className="m-0 mt-0.5 text-xs text-slate-500 font-medium">
+                Property Owner Portal
+              </p>
+            </div>
           </div>
 
           <button
